@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextClock;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -75,12 +76,16 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
          TextView tvBody;
          TextView tvNom;
          TextView tvName;
+         TextView tvSymbol;
+         TextView tvClock;
          RelativeLayout container;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             profileIma = itemView.findViewById(R.id.profileIma);
             tvBody = itemView.findViewById(R.id.tvBody);
             tvNom = itemView.findViewById(R.id.tvNom);
+            tvSymbol = itemView.findViewById(R.id.tvAkoS);
+            tvClock = itemView.findViewById(R.id.tvClock);
             tvName = itemView.findViewById(R.id.tvName);
             container = itemView.findViewById(R.id.Container);
         }
@@ -88,6 +93,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         public void bind(Tweet tweet) {
             tvNom.setText(tweet.user.screenName);
             tvName.setText(tweet.user.name);
+            tvClock.setText(tweet.getFormattedTimestamp());
             tvBody.setText(tweet.body);
             Glide.with(context).load(tweet.user.imageUrl)
                     .apply(RequestOptions.bitmapTransform(new RoundedCorners(180))).into(profileIma);

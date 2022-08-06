@@ -11,6 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
 import org.parceler.Parcels;
@@ -21,7 +24,8 @@ public class TweetdetailActivity extends AppCompatActivity {
     TextView tvName;
     TextView tvScreenname;
     ImageView ProfilImageD;
-    Context context;
+    TextView tvSymbol;
+    TextView tvClockD;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +35,14 @@ public class TweetdetailActivity extends AppCompatActivity {
         tvScreenname =findViewById(R.id.tvScreen_NameD);
         tvName = findViewById(R.id.tvNameD);
         ProfilImageD = findViewById(R.id.profileImaD);
+        tvSymbol = findViewById(R.id.tvAkoS);
+        tvClockD = findViewById(R.id.tvClockD);
         Tweet tweet = Parcels.unwrap(getIntent().getParcelableExtra("tweet"));
         tvCorps.setText(tweet.body);
         tvScreenname.setText(tweet.user.screenName);
         tvName.setText(tweet.user.name );
+        tvClockD.setText(tweet.getTimestamp());
+        Glide.with(this).load(tweet.user.imageUrl).apply(RequestOptions.bitmapTransform(new RoundedCorners(180))).into(ProfilImageD);
 
 
     }
