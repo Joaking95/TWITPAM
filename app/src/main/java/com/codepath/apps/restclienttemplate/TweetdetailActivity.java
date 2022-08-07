@@ -1,8 +1,6 @@
 package com.codepath.apps.restclienttemplate;
 
-import android.content.Context;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Icon;
+
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.ImageView;
