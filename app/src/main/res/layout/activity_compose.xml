@@ -7,39 +7,86 @@
     android:layout_height="match_parent"
     tools:context=".ComposeActivity">
 
-    <EditText
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarCompose"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etCompose"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_margin="5dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="kisaw genyen"
-        android:inputType="textMultiLine"
-        android:minLines="5"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btButton"
-        android:layout_below="@+id/etCompose"
-        android:layout_margin="5dp"
-        android:layout_alignParentEnd="true"
-        android:text="ekri"
-        />
+        android:background="#FFFFFF"
+        android:minHeight="?attr/actionBarSize"
+        app:titleTextColor="#000000">
 
-    <TextView
+    </androidx.appcompat.widget.Toolbar>
+
+    <Button
+        android:id="@+id/btButton"
+        android:layout_width="10dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/btButtonB"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:backgroundTint="#4EAFDC"
+        android:layout_marginStart="100dp"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:text="pibliye" />
+
+    <Button
+        android:id="@+id/btButtonB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/etCompose"
-        android:layout_marginEnd="100dp"
-        android:layout_marginTop="18dp"
-        app:counterEnabled="true"
-        app:counterMaxLength="280"
-        android:textStyle="bold"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/tvCompteur"/>
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="bouyon"
+        android:textColor="#0A2D85" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbarCompose"
+        android:background="#FFFFFF">
+
+
+        <EditText
+            android:id="@+id/etCompose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="kisaw genyen?"
+            android:inputType="textMultiLine"
+            android:minLines="5"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvCompteur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etCompose"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="100dp"
+            android:textStyle="bold"
+            app:counterEnabled="true"
+            app:counterMaxLength="280" />
+
+    </RelativeLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/ReturnButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        app:backgroundTint="#FFFFFF"
+        app:srcCompat="?attr/homeAsUpIndicator" />
 
 </RelativeLayout>
