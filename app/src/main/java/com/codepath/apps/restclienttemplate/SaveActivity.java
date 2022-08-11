@@ -20,9 +20,10 @@ public class SaveActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save);
         tvSave = findViewById(R.id.Save);
+        String File = "myfile"+".txt";
         FileInputStream fis = null;
         try {
-            fis = openFileInput("myfile");
+            fis = openFileInput(File);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -32,7 +33,7 @@ public class SaveActivity extends AppCompatActivity {
         try (BufferedReader reader = new BufferedReader(inputStreamReader)) {
             String line = reader.readLine();
             while (line != null) {
-                stringBuilder.append(line).append('\n');
+                stringBuilder.append(line).append("\n\n\n");
                 line = reader.readLine();
             }
         } catch (IOException e) {

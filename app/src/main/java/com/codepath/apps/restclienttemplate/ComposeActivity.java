@@ -66,9 +66,9 @@ public class ComposeActivity extends AppCompatActivity {
                         String tweetContent = etCompose.getText().toString();
                         if (charSequence.length()>0){
                             Log.i("hm","good");
-                            String filename = "myfile";
+                            String filename = "myfile"+".txt";
                             String fileContents = tweetContent;
-                            try (FileOutputStream fos = openFileOutput(filename, Context.MODE_PRIVATE)) {
+                            try (FileOutputStream fos = openFileOutput(filename, Context.MODE_APPEND)) {
                                 fos.write(fileContents.getBytes(StandardCharsets.UTF_8));
                                 fos.flush();
                                 fos.close();
