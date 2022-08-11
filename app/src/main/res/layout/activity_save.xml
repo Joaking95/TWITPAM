@@ -11,7 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/Save"
-        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
+        android:padding="5dp"
+        android:background="#CDCDCD"
+        android:textColor="#000000"
+        tools:text="je suis ce que je suis"
+
         />
 
 </LinearLayout>

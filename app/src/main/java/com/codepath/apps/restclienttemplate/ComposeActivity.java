@@ -1,8 +1,10 @@
 package com.codepath.apps.restclienttemplate;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -42,6 +44,41 @@ public class ComposeActivity extends AppCompatActivity {
     TextView tvCompteur;
     Button btnB;
     FloatingActionButton ReturnButton;
+
+    public void showAlertDialogButtonClicked(View view ) {
+
+        //setup the alert builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setMessage("ou ka kenbe saw ekri pouw ka pibliyel pita nan bouyon ou an");
+        builder.setTitle("ATANSYON");
+
+        //add the buttons
+        builder.setPositiveButton("Kenbe", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Intent intent = new Intent(ComposeActivity.this,TimelineActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        builder.setNegativeButton("Siprime", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // Action for 'NO' Button
+                Intent intent = new Intent(ComposeActivity.this,TimelineActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //create and show the alert dialog
+        //Creating dialog box
+        AlertDialog alert = builder.create();
+        //Setting the title manually
+        //alert.setTitle("AlertDialogExample");
+        alert.show();
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +89,7 @@ public class ComposeActivity extends AppCompatActivity {
         ReturnButton = findViewById(R.id.ReturnButton);
         tvCompteur = findViewById(R.id.tvCompteur);
         client = TwitterApp.getRestClient(this);
+
         etCompose.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -78,8 +116,7 @@ public class ComposeActivity extends AppCompatActivity {
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
-                            Intent intent = new Intent(ComposeActivity.this,SaveOrDeleteActivity.class);
-                            startActivity(intent);
+                            showAlertDialogButtonClicked(view );
                         }
                     }
                 });
@@ -89,7 +126,6 @@ public class ComposeActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
             }
         });
-
 
 
         btnB.setOnClickListener(new View.OnClickListener() {
@@ -106,8 +142,7 @@ public class ComposeActivity extends AppCompatActivity {
                 String tweetContent = etCompose.getText().toString();
                 if (tweetContent.length()>0){
                     Log.i("hm","good");
-                    Intent intent = new Intent(ComposeActivity.this,SaveOrDeleteActivity.class);
-                    startActivity(intent);
+                    showAlertDialogButtonClicked(view );
                 }
                 if(tweetContent.isEmpty() ){
                     Intent intent = new Intent(ComposeActivity.this,TimelineActivity.class);

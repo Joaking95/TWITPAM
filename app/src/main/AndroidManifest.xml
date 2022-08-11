@@ -17,9 +17,6 @@
             android:name=".SaveActivity"
             android:exported="false" />
         <activity
-            android:name=".SaveOrDeleteActivity"
-            android:exported="false" />
-        <activity
             android:name=".ComposeActivity"
             android:exported="false" />
         <activity
