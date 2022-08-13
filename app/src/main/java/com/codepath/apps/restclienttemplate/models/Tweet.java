@@ -36,7 +36,14 @@ public class Tweet {
     @ColumnInfo
     public  String media_url;
 
+    @ColumnInfo
+    public int reply_count;
 
+    @ColumnInfo
+    public int retweet_count;
+
+    @ColumnInfo
+    public int favorite_count;
     public long UserId;
     
     @Ignore
@@ -59,6 +66,20 @@ public class Tweet {
         tweet.user = user;
         tweet.UserId = user.id;
         tweet.id = jsonObject.getLong("id");
+
+        try {
+            //tweet.reply_count = jsonObject.getInt("reply_count");
+            tweet.favorite_count = jsonObject.getInt("favorite_count");
+            tweet.retweet_count = jsonObject.getInt("retweet_count");
+            JSONArray Action_Tweet = jsonObject.getJSONObject("user").getJSONArray("entities");
+            for (int i=0; i<Action_Tweet.length(); i++){
+                tweet.reply_count= Action_Tweet.getJSONObject(i).getInt("reply_count");
+                tweet.retweet_count = Action_Tweet.getJSONObject(i).getInt("retweet_count");
+                tweet.favorite_count = Action_Tweet.getJSONObject(i).getInt("favorite_count");
+            }
+        } catch (Exception e){}
+
+
         // Takes media for this tweet
         try {
             JSONArray entities_media = jsonObject.getJSONObject("extended_entities").getJSONArray("media");

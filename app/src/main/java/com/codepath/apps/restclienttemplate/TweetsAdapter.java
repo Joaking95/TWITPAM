@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextClock;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -19,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.FitCenter;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
 import org.parceler.Parcels;
@@ -88,6 +90,9 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
          ImageView favorite;
          ImageView repeat;
          ImageView chat;
+         TextView repeatUP;
+         TextView favoriteUp;
+         TextView chatUp;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             profileIma = itemView.findViewById(R.id.profileIma);
@@ -96,18 +101,25 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvSymbol = itemView.findViewById(R.id.tvAkoS);
             tvClock = itemView.findViewById(R.id.tvClock);
             media_url = itemView.findViewById(R.id.media_url);
+            chatUp = itemView.findViewById(R.id.tvCountCh);
+            repeatUP = itemView.findViewById(R.id.tvCountRep);
+            favoriteUp = itemView.findViewById(R.id.tvCountFav);
             tvName = itemView.findViewById(R.id.tvName);
             container = itemView.findViewById(R.id.Container);
             share = itemView.findViewById(R.id.ic_share);
             repeat = itemView.findViewById(R.id.ic_repeat);
             chat =itemView.findViewById(R.id.ic_chat);
             favorite = itemView.findViewById(R.id.ic_favorite);
+
         }
 
         public void bind(Tweet tweet) {
             String PostImage = tweet.media_url;
             tvNom.setText(tweet.user.screenName);
             tvName.setText(tweet.user.name);
+            repeatUP.setText(String.valueOf( tweet.retweet_count));
+            chatUp.setText(String.valueOf( tweet.reply_count));
+            favoriteUp.setText(String.valueOf( tweet.favorite_count));
             tvClock.setText(tweet.getFormattedTimestamp());
             tvBody.setText(tweet.body);
             media_url.setVisibility(View.GONE);
@@ -119,14 +131,20 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                 if (!ms.isEmpty()) {
                     List<String> m = Arrays.asList(ms.get(0).split(" - "));
                     if (m.get(1).equals("photo")) {
-
                         media_url.setVisibility(View.VISIBLE);
-                        Glide.with(context).load(m.get(0)).transform(new FitCenter(), new RoundedCorners(12)).into(media_url);
+                        Glide.with(context).load(m.get(0)).transform(new FitCenter(), new RoundedCorners(12))
+                                .override(Target.SIZE_ORIGINAL).into(media_url);
                     }
                 }
             } catch (Exception e) {}
+            repeat.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context, "retweet",Toast.LENGTH_SHORT).show();
+                    repeatUP.setText(String.valueOf(tweet.retweet_count +1) );
 
-           // medi.executePendingBindings();
+                }
+            });
             container.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
