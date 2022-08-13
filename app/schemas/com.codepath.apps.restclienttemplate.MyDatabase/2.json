@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "05dd32adf8f9055986640443d46a64b0",
+    "identityHash": "ff368d5d0d962f8cc8a6a31e9a4db751",
     "entities": [
       {
         "tableName": "SampleModel",
@@ -32,7 +32,7 @@
       },
       {
         "tableName": "Tweet",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `body` TEXT, `createdAt` TEXT, `UserId` INTEGER NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`UserId`) REFERENCES `User`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `body` TEXT, `createdAt` TEXT, `media_url` TEXT, `UserId` INTEGER NOT NULL, `medias` TEXT, PRIMARY KEY(`id`), FOREIGN KEY(`UserId`) REFERENCES `User`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "id",
@@ -53,10 +53,22 @@
             "notNull": false
           },
           {
+            "fieldPath": "media_url",
+            "columnName": "media_url",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
             "fieldPath": "UserId",
             "columnName": "UserId",
             "affinity": "INTEGER",
             "notNull": true
+          },
+          {
+            "fieldPath": "medias",
+            "columnName": "medias",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -122,7 +134,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '05dd32adf8f9055986640443d46a64b0')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ff368d5d0d962f8cc8a6a31e9a4db751')"
     ]
   }
 }
