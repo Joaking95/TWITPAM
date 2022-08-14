@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".TweetdetailActivity">
+
+        <ImageView
+            android:id="@+id/profileImaD"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tvNameD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/profileImaD"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            tools:text="patriyot" />
+
+        <TextView
+            android:id="@+id/tvScreen_NameD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tvAkoS"
+            android:textColor="#7E7D7D"
+            android:textStyle="normal"
+            tools:text="FBJL95" />
+
+        <TextView
+            android:id="@+id/tvCorpsD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profileImaD"
+            android:layout_margin="10dp"
+            android:autoLink="all"
+            android:justificationMode="inter_word"
+            android:linksClickable="true"
+            tools:text="This is my tweet" />
+
+        <LinearLayout
+            android:id="@+id/mediaEmbeddedD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvCorpsD"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/media_urlR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="center"
+                    android:visibility="gone"
+                    tools:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/tvClockD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/media_urlR"
+                    android:layout_marginStart="10dp"
+                    tools:text="12h" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnActionsD"
+            android:layout_marginTop="7dp"
+            android:layout_below="@+id/mediaEmbeddedD"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+                <include layout="@layout/itemaction"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvAkoS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tvNameD"
+            android:text=".@"
+            tools:text=".@"
+
+            />
+        <View
+            android:layout_marginTop="7dp"
+            android:layout_below="@+id/lnActionsD"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#818181"/>
+
+
+
+</RelativeLayout>

@@ -2,6 +2,8 @@ package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -111,6 +113,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             chat =itemView.findViewById(R.id.ic_chat);
             favorite = itemView.findViewById(R.id.ic_favorite);
 
+
         }
 
         public void bind(Tweet tweet) {
@@ -118,7 +121,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvNom.setText(tweet.user.screenName);
             tvName.setText(tweet.user.name);
             repeatUP.setText(String.valueOf( tweet.retweet_count));
-            chatUp.setText(String.valueOf( tweet.reply_count));
+            //chatUp.setText(String.valueOf( tweet.reply_count));
             favoriteUp.setText(String.valueOf( tweet.favorite_count));
             tvClock.setText(tweet.getFormattedTimestamp());
             tvBody.setText(tweet.body);
@@ -145,6 +148,19 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
 
                 }
             });
+
+            favorite.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                        Toast.makeText(context, "like", Toast.LENGTH_SHORT).show();
+                        favorite.setImageResource(R.drawable.ic_baseline_favorite_24);
+                        favoriteUp.setText(String.valueOf(tweet.favorite_count + 1));
+                }
+            });
+
+
+
             container.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

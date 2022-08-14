@@ -68,14 +68,15 @@ public class Tweet {
         tweet.id = jsonObject.getLong("id");
 
         try {
-            //tweet.reply_count = jsonObject.getInt("reply_count");
+
             tweet.favorite_count = jsonObject.getInt("favorite_count");
             tweet.retweet_count = jsonObject.getInt("retweet_count");
-            JSONArray Action_Tweet = jsonObject.getJSONObject("user").getJSONArray("entities");
+
+            JSONObject Action_Tweet = jsonObject.getJSONObject("retweeted_status");
             for (int i=0; i<Action_Tweet.length(); i++){
-                tweet.reply_count= Action_Tweet.getJSONObject(i).getInt("reply_count");
-                tweet.retweet_count = Action_Tweet.getJSONObject(i).getInt("retweet_count");
-                tweet.favorite_count = Action_Tweet.getJSONObject(i).getInt("favorite_count");
+                //tweet.reply_count= Action_Tweet.getInt("reply_count");
+                tweet.retweet_count = Action_Tweet.getInt("retweet_count");
+                tweet.favorite_count = Action_Tweet.getInt("favorite_count");
             }
         } catch (Exception e){}
 
@@ -92,6 +93,7 @@ public class Tweet {
             }
 
         } catch (Exception e) {e.printStackTrace(); }
+
 
         return tweet;
     }
