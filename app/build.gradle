@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 
-def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apikeyPropertiesFile = rootProject.file("apikey.properties.example")
 def apikeyProperties = new Properties()
  apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 
